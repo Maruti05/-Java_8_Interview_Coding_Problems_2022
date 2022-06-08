@@ -11,15 +11,25 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StringOperations {
 public static void main(String[] args) throws ParseException {
 	//joinStrings();
-	stringToDate();
-	colectToSet();
+	//stringToDate();
+	//colectToSet();
+	countOccurenceOfWords();
+}
+private static void countOccurenceOfWords() {
+String sentenace="welcome to code decode and code decode welcome you";
+List<String> words = Arrays.asList(sentenace.split(" "));
+Map<String, Long> wordOcc = words.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+wordOcc.entrySet().forEach((map)->System.out.println(map.getKey() +"   "+map.getValue()));
+wordOcc.entrySet().forEach(System.out::print);
 }
 private static void colectToSet() {
 	Set<String> set = Stream.of("California", "Chicago", "New York")
